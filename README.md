@@ -7,9 +7,8 @@ Este repositorio contiene el complemento técnico desarrollado para el TFM, enfo
 
 El diseño está inspirado en la lógica modular de KYPO Cyber Range, adaptado a un sandbox local para pruebas controladas.
 
----
 
-## 🧩 Objetivo del complemento técnico
+##  Objetivo del complemento técnico
 
 El complemento implementa un flujo modular que permite:
 
@@ -22,7 +21,7 @@ El complemento implementa un flujo modular que permite:
 
 Este código fue utilizado como parte del proceso de validación técnica del TFM.
 
----
+
 
 ## ⚙️ Arquitectura del complemento
 
@@ -37,9 +36,9 @@ El código está organizado en módulos:
 
 El diseño permite añadir futuros entornos (por ejemplo, nube pública) sin modificar la lógica interna.
 
----
 
-## 🧪 Modo Simulación
+
+##  Modo Simulación
 
 El complemento incluye un modo de simulación:
 
@@ -55,7 +54,7 @@ El complemento incluye un modo de simulación:
 
 ---
 
-## 📁 Estructura del repositorio
+##  Estructura del repositorio
 
 - **`TFMlocal.ipynb`** – Notebook principal desarrollado en Google Colab  
 - **`logs/eventos_complemento.log`** – Registro de eventos del complemento  
@@ -63,12 +62,68 @@ El complemento incluye un modo de simulación:
 
 ---
 
-## 🚀 Ejecución del complemento
+##  Ejecución del complemento
 
 1. Abrir el notebook en Google Colab o Jupyter.  
 2. Ajustar credenciales reales de `oneadmin` si se desactiva el modo simulación.  
 3. Ejecutar la función `ejecutar_complemento()` para iniciar el flujo.  
 
----
+## Validación del complemento
+La validación del complemento se realizó en dos entornos distintos, siguiendo una metodología incremental:
 
-Este repositorio sirve como evidencia técnica y trazabilidad del desarrollo realizado en el TFM.
+## 1. Validación en Google Colab (modo simulación)
+El notebook Copia_de_TFMlocal.ipynb contiene la ejecución del complemento en modo simulación, debido a las restricciones de red de Colab.
+En este modo, el sistema:
+
+- Ejecuta el flujo principal del complemento
+
+- Registra cada acción en consola
+
+- Genera logs con timestamps
+
+- Valida la lógica modular sin llamar a la API XML‑RPC
+
+Esta validación permitió comprobar la coherencia del flujo, la modularidad y la trazabilidad del sistema.
+## 2. Validación en Ubuntu + MiniONE (entorno real)
+El complemento también fue ejecutado en un entorno real basado en:
+
+- Ubuntu 22.04
+
+- MiniONE (OpenNebula)
+
+- VirtualBox
+
+En este entorno, el complemento se ejecutó inicialmente en modo simulación, pero dentro de la infraestructura real, lo que permitió validar:
+
+- Rutas y permisos del sistema
+
+- Estructura de carpetas
+
+- Generación de logs reales
+
+- Funcionamiento del script en un entorno OpenNebula operativo
+
+Posteriormente, se realizaron pruebas en modo real para validar la creación de plantillas, redes y máquinas virtuales desde la API.
+
+Los logs generados en Ubuntu se encuentran almacenados en Google Drive y fueron mostrados durante la presentación del TFM. Están disponibles para revisión si el tribunal lo requiere.
+
+
+## 3. Validación manual de roles
+Finalmente, se verificó manualmente el funcionamiento de las máquinas virtuales creadas (roles atacante y objetivo) desde la interfaz de MiniONE, confirmando que:
+
+Las VMs se crean correctamente
+
+Pueden iniciarse desde la interfaz
+
+Operan como se espera en un escenario educativo tipo CTF
+
+## Conclusión de la validación
+La combinación de validación en Colab, validación en entorno real y verificación manual demuestra que el complemento es:
+
+- Funcional
+
+- Reproducible
+
+- Portable
+
+- Adecuado para entornos educativos con recursos limitados
