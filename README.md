@@ -111,13 +111,14 @@ Los logs generados en Ubuntu se encuentran almacenados en Google Drive y fueron 
 ## 3. Validación manual de roles
 Finalmente, se verificó manualmente el funcionamiento de las máquinas virtuales creadas (roles atacante y objetivo) desde la interfaz de MiniONE, confirmando que:
 
-Las VMs se crean correctamente
+- Las VMs se crean correctamente
 
-Pueden iniciarse desde la interfaz
+- Pueden iniciarse desde la interfaz
 
-Operan como se espera en un escenario educativo tipo CTF
+- Operan como se espera en un escenario educativo tipo CTF
 
 ## Conclusión de la validación
+
 La combinación de validación en Colab, validación en entorno real y verificación manual demuestra que el complemento es:
 
 - Funcional
