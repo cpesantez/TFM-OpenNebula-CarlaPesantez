@@ -53,7 +53,6 @@ El complemento incluye un modo de simulación:
 
 ---
 
-##  Estructura del repositorio
 
 ## Estructura del repositorio
 
