@@ -91,6 +91,18 @@ Ambos contienen la misma lógica del complemento, adaptada al entorno de ejecuci
 ----------------------------
 ##  Arquitectura del complemento
 
+El complemento técnico desarrollado para el TFM está organizado en módulos funcionales que permiten una ejecución clara, trazable y adaptable. Cada módulo cumple una función específica dentro del flujo tipo CTF, desde la configuración inicial hasta la generación de logs.
+
+La arquitectura modular facilita la comprensión del código, su mantenimiento y su posible extensión hacia entornos más complejos. El diseño está inspirado en la lógica de KYPO Cyber Range, adaptado a un entorno local reproducible.
+
+La siguiente figura muestra la estructura conceptual del script `tfmlocal.py`, implementado en Google Colab y validado en modo simulación:
+
+<img width="1061" height="760" alt="image" src="https://github.com/user-attachments/assets/1178788d-de65-4d36-9ba3-06babab16c2b" />
+
+
+*Figura: Estructura modular del complemento implementado en Google Colab. Fuente: Elaboración propia en Canva.*
+
+
 El código está organizado en módulos:
 
 1. **Configuración del entorno**  
