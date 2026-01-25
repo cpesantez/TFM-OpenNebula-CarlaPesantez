@@ -41,7 +41,6 @@ El diseño permite añadir futuros entornos (por ejemplo, nube pública) sin mod
 
 El complemento incluye un modo de simulación controlado por la variable:
 
-```python
 
 MODO_SIMULACION = True  # Simulación
 MODO_SIMULACION = False  # Modo real
