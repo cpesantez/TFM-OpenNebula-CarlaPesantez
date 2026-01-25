@@ -73,6 +73,7 @@ El desarrollo, ejecución y validación del complemento se realizaron utilizando
 
 Aunque inicialmente se planificó utilizar Google Colab como entorno principal de desarrollo distribuido, su uso se centró en la validación conceptual del diseño y en la ejecución en modo simulación. Su integración con GitHub facilitó la trazabilidad y el control de versiones durante el desarrollo.
 
+<img width="859" height="648" alt="image" src="https://github.com/user-attachments/assets/7ab41466-442a-42f0-b6f1-3414c16c71da" />
 
 --------------
 
