@@ -142,7 +142,6 @@ MODO_SIMULACION = False  # Modo real
 
 ---------
 
-
 ## Ejecución del complemento
 
 ### 1. Ejecución desde el notebook (Google Colab o Jupyter)
@@ -191,9 +190,7 @@ El modo real (**MODO_SIMULACION = False**) no se utilizó en MiniONE debido a:
 
 El modo real queda disponible para entornos OpenNebula más robustos.
 
-
 -----
-
 
 ## Validación del complemento
 
@@ -249,6 +246,7 @@ Se verificó manualmente desde la interfaz de MiniONE que:
 
 - Operan como se espera en un escenario educativo tipo CTF (Capture the Flag)
 
+
 ## Conclusión de la validación
 
 La combinación de validación en Colab, validación en entorno real y verificación manual demuestra que el complemento es:
@@ -261,7 +259,8 @@ La combinación de validación en Colab, validación en entorno real y verificac
 
 Adecuado para entornos educativos con recursos limitados
 
-##LIMITACIONES DEL ENTORNO Y LA VALIDACIÓN
+--------------------------------------------------------
+## LIMITACIONES DEL ENTORNO Y LA VALIDACIÓN
 
 Durante el desarrollo y validación se identificaron varias limitaciones:
 
