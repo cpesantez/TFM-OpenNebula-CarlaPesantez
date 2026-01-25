@@ -9,7 +9,7 @@ El trabajo se enfoca en la validación de un entorno local basado en OpenNebula 
 
 El diseño del complemento está inspirado en la lógica modular de KYPO Cyber Range, adaptado a un sandbox local para pruebas controladas y reproducibles.
 
-El diseño está inspirado en la lógica modular de KYPO Cyber Range, adaptado a un sandbox local para pruebas controladas y reproducibles.
+
 
 ----------
 ## Estructura del repositorio
