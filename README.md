@@ -66,6 +66,12 @@ Este archivo corresponde a la ejecución en modo simulación y modo real dentro 
 
 - **`README.md`** – Documentación del repositorio.
 
+## Correspondencia entre archivos
+
+- `local.py` → Archivo ejecutado en Ubuntu dentro del entorno real (MiniONE).  
+- `Copia_de_TFMlocal.ipynb` → Notebook equivalente usado en Google Colab para validación en modo simulación.
+
+Ambos contienen la misma lógica del complemento, adaptada al entorno de ejecución.
 
 ---
 
