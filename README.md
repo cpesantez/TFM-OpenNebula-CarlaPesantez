@@ -4,9 +4,9 @@
 
 **Evaluación Comparativa de Soluciones Cyber Range en Nube Pública y Arquitecturas Híbridas, con Desarrollo de un Complemento Comunitario para OpenNebula**
 
-Este repositorio contiene el complemento técnico desarrollado para el TFM, enfocado en la validación de un entorno local basado en OpenNebula MiniONE sobre Ubuntu 22.04 LTS, ejecutado en VirtualBox con configuración NAT + Port Forwarding.
+Este repositorio contiene el complemento técnico desarrollado para el Trabajo Final de Maestria en Ciberseguridad y Privacidad- Seguridad en el Cloud, enfocado en la validación de un entorno local basado en OpenNebula MiniONE sobre Ubuntu 22.04 LTS, ejecutado en VirtualBox con configuración NAT + Port Forwarding.
 
-El diseño está inspirado en la lógica modular de KYPO Cyber Range, adaptado a un sandbox local para pruebas controladas.
+El diseño está inspirado en la lógica modular de KYPO Cyber Range, adaptado a un sandbox local para pruebas controladas y reproducibles.
 
 
 ##  Objetivo del complemento técnico
@@ -37,10 +37,14 @@ El código está organizado en módulos:
 El diseño permite añadir futuros entornos (por ejemplo, nube pública) sin modificar la lógica interna.
 
 
-
 ##  Modo Simulación
 
-El complemento incluye un modo de simulación:
+El complemento incluye un modo de simulación controlado por la variable:
+
+```python
+
+MODO_SIMULACION = True  # Simulación
+MODO_SIMULACION = False  # Modo real
 
 - **`MODO_SIMULACION = True`**  
   - No ejecuta llamadas reales a OpenNebula  
@@ -58,10 +62,10 @@ El complemento incluye un modo de simulación:
 ## Estructura del repositorio
 
 - ** `Copia_de_TFMlocal.ipynb`** – Notebook principal desarrollado en Google Colab.  
-Este notebook contiene el mismo código que el archivo `local.py` utilizado en Ubuntu durante la validación en MiniONE.
+Este notebook contiene el mismo código que el archivo `TFMlocal.py` utilizado en Ubuntu durante la validación en MiniONE.
 
 - ** `TFMlocal.py`** – Versión del complemento ejecutada en Ubuntu dentro del entorno real (MiniONE + VirtualBox).  
-Este archivo corresponde a la ejecución en modo simulación y modo real dentro de la infraestructura local.
+Este archivo corresponde a la ejecución en modo simulación y pruebas de interacci{on con la API.
 
 - ** `logs/`** – Carpeta de logs generados durante la validación (almacenados en Google Drive).
 
@@ -81,13 +85,38 @@ Ambos contienen la misma lógica del complemento, adaptada al entorno de ejecuci
 El complemento puede ejecutarse de dos maneras, dependiendo del entorno:
 
 1. Ejecución desde el notebook (Google Colab o  Jupyter)
-2. Activar o desactivar el modo simulación modificando la variable:
-  MODO_SIMULACION = True   # Simulación
-  MODO_SIMULACION = False  # Modo real
-3. Si se usa modo real, ajustar las credenciales de oneadmin.
-4. Ejecutar todas las celdas hasta llegar al flujo principal.
-5. Ejecutar:
-   ejecutar_complemento()
+Pasos de ejecucion
+  1. Abrir Copia_de_TFMlocal.ipynb
+  2. Activar o desactivar el modo simulación modificando la variable:
+    MODO_SIMULACION = True   # Simulación
+    MODO_SIMULACION = False  # Modo real
+
+  3. Si se usa modo real, ajustar las credenciales de oneadmin.
+  4. Ejecutar todas las celdas hasta llegar al flujo principal.
+  5. Ejecutar:
+     ejecutar_complemento()
+
+2. Ejecucion desde Ubuntu (archivo TFMlocal.py)
+En el entorno Ubuntu + MiniONE, el complemento se ejecuta por defecto en **modo simulación**, ya que la variable:
+```python
+MODO_SIMULACION = True,
+está definida así en el código original.
+Este modo permite validar la lógica, rutas, permisos y generación de logs dentro del entorno real (SANDBOX LOCAL) sin depender de la estabilidad de la API XML-RPC.
+Pasos de ejecucion 
+  1. Abrir una terminal en la carpeta del archivo TFMlocal.py.
+  2. Ejecutar el complemento directamente (no es necesario modificar nada para modo simulación):
+  python3 TFMlocal.py
+  3. Ejecutar el complemento directamente (no es necesario modificar nada para modo simulación):
+      python3 TFMlocal.py
+  4. Revisar los logs generados en la carpeta logs/ dentro del propio entorno local (sandbox).
+      Estos logs corresponden a la validación real realizada en Ubuntu.
+
+Si bien el complemento incluye la opción de ejecutar en modo real (`MODO_SIMULACION = False`), este modo no fue utilizado en el entorno MiniONE, ya que dicho entorno no garantiza la estabilidad necesaria para realizar llamadas reales a la API XML-RPC.
+
+El modo real (`MODO_SIMULACION = False`) no fue utilizado en MiniONE, ya que este entorno está diseñado para pruebas rápidas y no garantiza la estabilidad necesaria para ejecutar llamadas reales a la API XML-RPC. MiniONE funciona sobre VirtualBox y depende de recursos locales, lo que puede provocar reinicios del servicio, latencia o fallos de conexión. Por esta razón, la validación se realizó en modo simulación dentro del entorno real, garantizando trazabilidad y reproducibilidad sin depender de la estabilidad de la API.
+
+El modo real queda disponible para entornos OpenNebula más robustos (por ejemplo, despliegues multi-nodo o instalaciones completas), pero no se recomienda su uso en MiniONE.
+
 
 
 -----
