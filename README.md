@@ -15,7 +15,21 @@ El diseño está inspirado en la lógica modular de KYPO Cyber Range, adaptado a
 
 ## Requisitos del entorno: 
 
-- MiniONE, VirtualBox, Ubuntu,etc.
+El desarrollo, ejecución y validación del complemento se realizaron utilizando el siguiente entorno técnico:
+
+- **Lenguaje:** Python 3.x  
+- **Entorno de desarrollo distribuido:** Google Colab (pruebas conceptuales, revisión modular y control de versiones)  
+- **Plataforma de orquestación:** OpenNebula 6.x desplegado mediante MiniONE  
+- **Sistema operativo base:** Ubuntu 22.04 LTS  
+- **Virtualización local:** VirtualBox sobre host Windows 11 (modo NAT + Port Forwarding)  
+- **Acceso remoto y transferencia:** SSH y WinSCP  
+- **Interfaz de gestión:** FireEdge / Sunstone  
+- **Repositorio de código:** GitHub  
+- **Plantillas utilizadas:** Alpine Linux 3.2  
+- **Herramientas previstas (no utilizadas en la validación final):** Nmap, Wireshark y DVWA  
+
+Aunque inicialmente se planificó utilizar Google Colab como entorno principal de desarrollo distribuido, su uso se centró en la validación conceptual del diseño y en la ejecución en modo simulación. Su integración con GitHub facilitó la trazabilidad y el control de versiones durante el desarrollo.
+
 
 --------------
 
