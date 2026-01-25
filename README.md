@@ -280,3 +280,22 @@ Durante el desarrollo y validación se identificaron varias limitaciones:
 → Se consideraron conceptualmente, pero no se ejecutaron por restricciones del entorno.
 
 Estas limitaciones no afectan la validez conceptual del complemento, sino que señalan áreas de mejora para futuras implementaciones en entornos OpenNebula más robustos.
+
+----------
+## Proyección y limitaciones del entorno
+
+El complemento fue validado en un entorno monousuario basado en MiniONE; sin embargo, su diseño sigue criterios de interoperabilidad y potencial comunitario. Esto permite su futura adaptación a:
+
+* programas de formación con múltiples estudiantes,
+
+* laboratorios compartidos entre facultades o centros,
+
+* iniciativas interuniversitarias,
+
+* infraestructuras federadas en nube pública e híbrida.
+
+La validación confirma que el complemento funciona correctamente en un entorno reducido, mientras que su arquitectura modular garantiza la posibilidad de extenderlo a ecosistemas multiusuario y distribuidos, coherentes con el objetivo formativo del proyecto.
+
+Las pruebas avanzadas tipo CTF no pudieron realizarse debido a las limitaciones inherentes de MiniONE y del hardware disponible. MiniONE está diseñado para uso monousuario y para un número reducido de máquinas virtuales, lo que impide desplegar topologías complejas, múltiples roles simultáneos o servicios vulnerables necesarios para un CTF real. La imposibilidad de habilitar redes en modo Bridge y las restricciones de memoria y CPU del equipo anfitrión limitaron la creación de escenarios aislados con tráfico controlado.
+
+Por razones éticas y de seguridad, tampoco se habilitaron vulnerabilidades reales fuera de un entorno completamente aislado. En conjunto, estos factores justifican que la validación se centrara en pruebas básicas de aprovisionamiento y simulación, tal como se definió en la metodología.
