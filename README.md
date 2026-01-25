@@ -115,7 +115,7 @@ MODO_SIMULACION = False  # Modo real
 5. Ejecutar:
      ejecutar_complemento()
 
-2. Ejecucion desde Ubuntu (archivo TFMlocal.py)
+### 2. Ejecucion desde Ubuntu (archivo TFMlocal.py)
 En el entorno Ubuntu + MiniONE, el complemento se ejecuta por defecto en modo simulación, ya que la variable:
 python
 **MODO_SIMULACION = True**,está definida así en el código original. Este modo permite validar la lógica, rutas, permisos y generación de logs dentro del entorno real (sandbox local) sin depender de la estabilidad de la API XML-RPC.
@@ -141,6 +141,7 @@ python
 
 
 ## Validación del complemento
+
 La validación del complemento se realizó en dos entornos distintos, siguiendo una metodología incremental:
   1) Google Colab (entorno no real, sin acceso a la API XML-RPC)
   2) Ubuntu + MiniONE (entorno real, sandbox local)
@@ -212,7 +213,7 @@ La combinación de validación en Colab, validación en entorno real y verificac
 Durante el desarrollo y validación del complemento se identificaron varias limitaciones técnicas derivadas del entorno disponible: - **Sin acceso al laboratorio cloud institucional (AWS/UOC):Esto obligó a realizar toda la validación en un entorno local reducido basado en Ubuntu + MiniONE.
 - **Imposibilidad de utilizar la API XML-RPC de OpenNebula en la validación práctica:MiniONE es un entorno monousuario diseñado para pruebas rápidas y no garantiza la estabilidad necesaria para ejecutar llamadas reales a la API. Además, Google Colab no permite comunicación con redes locales ni con puertos personalizados, por lo que tampoco es posible acceder a la API desde ese entorno. Por estas razones, la validación se realizó íntegramente en **modo simulación**.
 
-- **Dependencia de VirtualBox en modo NAT con port forwarding (Limitaciones del PC):
+- **Dependencia de VirtualBox en modo NAT con port forwarding (Limitaciones del Hardware):
   * Esta configuración limita la exposición de servicios hacia el exterior y afecta la conectividad, impidiendo pruebas reales con     la API XML-RPC.
 - **Escenario monousuario en MiniONE: No fue posible validar la lógica multiusuario del complemento, ya que MiniONE no soporta este     tipo de escenarios.
 - **Ausencia de pruebas con herramientas de análisis avanzadas (Nmap, Wireshark, DVWA):Estas herramientas se consideraron como referencia conceptual, pero no se ejecutaron debido a las restricciones del entorno local.
