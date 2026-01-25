@@ -80,43 +80,50 @@ Ambos contienen la misma lógica del complemento, adaptada al entorno de ejecuci
 
 ---
 
-##  Ejecución del complemento
+## Ejecución del complemento
 
 El complemento puede ejecutarse de dos maneras, dependiendo del entorno:
 
-1. Ejecución desde el notebook (Google Colab o  Jupyter)
-Pasos de ejecucion
-  1. Abrir Copia_de_TFMlocal.ipynb
-  2. Activar o desactivar el modo simulación modificando la variable:
-    MODO_SIMULACION = True   # Simulación
-    MODO_SIMULACION = False  # Modo real
+---
 
-  3. Si se usa modo real, ajustar las credenciales de oneadmin.
-  4. Ejecutar todas las celdas hasta llegar al flujo principal.
-  5. Ejecutar:
+### 1. Ejecución desde el notebook (Google Colab o Jupyter)
+
+**Pasos de ejecución:**
+
+1. Abrir `Copia_de_TFMlocal.ipynb`.
+2. Activar o desactivar el modo simulación modificando la variable:
+
+```python
+MODO_SIMULACION = True   # Simulación
+MODO_SIMULACION = False  # Modo real
+
+3. Si se usa modo real, ajustar las credenciales de oneadmin.
+
+4. Ejecutar todas las celdas hasta llegar al flujo principal.
+
+5. Ejecutar:
      ejecutar_complemento()
 
 2. Ejecucion desde Ubuntu (archivo TFMlocal.py)
-En el entorno Ubuntu + MiniONE, el complemento se ejecuta por defecto en **modo simulación**, ya que la variable:
+En el entorno Ubuntu + MiniONE, el complemento se ejecuta por defecto en modo simulación, ya que la variable:
 ```python
 MODO_SIMULACION = True,
 está definida así en el código original.
-Este modo permite validar la lógica, rutas, permisos y generación de logs dentro del entorno real (SANDBOX LOCAL) sin depender de la estabilidad de la API XML-RPC.
+Este modo permite validar la lógica, rutas, permisos y generación de logs dentro del entorno real (sandbox local) sin depender de la estabilidad de la API XML-RPC.
 Pasos de ejecucion 
   1. Abrir una terminal en la carpeta del archivo TFMlocal.py.
   2. Ejecutar el complemento directamente (no es necesario modificar nada para modo simulación):
   python3 TFMlocal.py
-  3. Ejecutar el complemento directamente (no es necesario modificar nada para modo simulación):
-      python3 TFMlocal.py
-  4. Revisar los logs generados en la carpeta logs/ dentro del propio entorno local (sandbox).
+  3. Revisar los logs generados en la carpeta logs/ dentro del propio entorno local (sandbox).
       Estos logs corresponden a la validación real realizada en Ubuntu.
 
-Si bien el complemento incluye la opción de ejecutar en modo real (`MODO_SIMULACION = False`), este modo no fue utilizado en el entorno MiniONE, ya que dicho entorno no garantiza la estabilidad necesaria para realizar llamadas reales a la API XML-RPC.
+Si bien el complemento incluye la opción de ejecutar en modo real (MODO_SIMULACION = False), este modo no fue utilizado en el entorno MiniONE, ya que dicho entorno no garantiza la estabilidad necesaria para realizar llamadas reales a la API XML-RPC.
 
-El modo real (`MODO_SIMULACION = False`) no fue utilizado en MiniONE, ya que este entorno está diseñado para pruebas rápidas y no garantiza la estabilidad necesaria para ejecutar llamadas reales a la API XML-RPC. MiniONE funciona sobre VirtualBox y depende de recursos locales, lo que puede provocar reinicios del servicio, latencia o fallos de conexión. Por esta razón, la validación se realizó en modo simulación dentro del entorno real, garantizando trazabilidad y reproducibilidad sin depender de la estabilidad de la API.
+MiniONE está diseñado para pruebas rápidas y funciona sobre VirtualBox, dependiendo de recursos locales. Esto puede provocar reinicios del servicio, latencia o fallos de conexión.
+
+Por esta razón, la validación se realizó en modo simulación dentro del entorno real, garantizando trazabilidad y reproducibilidad sin depender de la estabilidad de la API.
 
 El modo real queda disponible para entornos OpenNebula más robustos (por ejemplo, despliegues multi-nodo o instalaciones completas), pero no se recomienda su uso en MiniONE.
-
 
 
 -----
@@ -124,9 +131,14 @@ El modo real queda disponible para entornos OpenNebula más robustos (por ejempl
 
 ## Validación del complemento
 La validación del complemento se realizó en dos entornos distintos, siguiendo una metodología incremental:
+  1) Google Colab (entorno no real, sin acceso a la API XML-RPC)
+  2) Ubuntu + MiniONE (entorno real, sandbox local)
+
+Este enfoque permitió comprobar la lógica del complemento, su trazabilidad y su funcionamiento dentro de un entorno OpenNebula operativo, sin depender de infraestructura compleja.
 
 ## 1. Validación en Google Colab (modo simulación)
-El notebook Copia_de_TFMlocal.ipynb contiene la ejecución del complemento en modo simulación, debido a las restricciones de red de Colab.
+
+El notebook "Copia_de_TFMlocal.ipynb" se ejecutó en Google Colab, donde las restricciones de red impiden cualquier comunicación con la API XML-RPC de OpenNebula. Por esta razón, la validación se realizó exclusivamente en **modo simulación**.
 En este modo, el sistema:
 
 - Ejecuta el flujo principal del complemento
@@ -183,3 +195,16 @@ La combinación de validación en Colab, validación en entorno real y verificac
 - Portable
 
 - Adecuado para entornos educativos con recursos limitados
+
+##LIMITACIONES DEL ENTORNO Y LA VALIDACIÓN
+
+Durante el desarrollo y validación del complemento se identificaron varias limitaciones técnicas derivadas del entorno disponible: - **Sin acceso al laboratorio cloud institucional (AWS/UOC):** Esto obligó a realizar toda la validación en un entorno local reducido basado en Ubuntu + MiniONE.
+- **Imposibilidad de utilizar la API XML-RPC de OpenNebula en la validación práctica:** MiniONE es un entorno monousuario diseñado para pruebas rápidas y no garantiza la estabilidad necesaria para ejecutar llamadas reales a la API. Además, Google Colab no permite comunicación con redes locales ni con puertos personalizados, por lo que tampoco es posible acceder a la API desde ese entorno. Por estas razones, la validación se realizó íntegramente en **modo simulación**.
+- **Dependencia de VirtualBox en modo NAT con port forwarding:
+  * Esta configuración limita la exposición de servicios hacia el exterior y afecta la conectividad, impidiendo pruebas reales con     la API XML-RPC.
+- **Escenario monousuario en MiniONE:
+    ** No fue posible validar la lógica multiusuario del complemento, ya que MiniONE no soporta este tipo de escenarios.
+- **Ausencia de pruebas con herramientas de análisis avanzadas (Nmap, Wireshark, DVWA):
+    ** Estas herramientas se consideraron como referencia conceptual, pero no se ejecutaron debido a las restricciones del entorno         local.
+Estas limitaciones no afectan la validez conceptual del complemento, sino que señalan áreas de mejora para futuras implementaciones en entornos OpenNebula más robustos.
+
