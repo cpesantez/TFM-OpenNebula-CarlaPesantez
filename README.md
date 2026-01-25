@@ -10,6 +10,27 @@ El trabajo se enfoca en la validación de un entorno local basado en OpenNebula 
 El diseño del complemento está inspirado en la lógica modular de KYPO Cyber Range, adaptado a un sandbox local para pruebas controladas y reproducibles.
 
 El diseño está inspirado en la lógica modular de KYPO Cyber Range, adaptado a un sandbox local para pruebas controladas y reproducibles.
+
+----------
+## Estructura del repositorio
+
+- **Copia_de_TFMlocal.ipynb** – Notebook principal desarrollado en Google Colab.  
+Este notebook contiene el mismo código que el archivo `TFMlocal.py` utilizado en Ubuntu durante la validación en MiniONE.
+
+- **TFMlocal.py** – Versión del complemento ejecutada en Ubuntu dentro del entorno real (MiniONE + VirtualBox).  
+Este archivo corresponde a la ejecución en modo simulación y pruebas de interacci{on con la API.
+
+- **logs/** – Carpeta de logs generados durante la validación (almacenados en Google Drive).
+
+- **README.md** – Documentación del repositorio.
+
+## Correspondencia entre archivos
+
+- **TFMlocal.py** → Archivo ejecutado en Ubuntu dentro del entorno real (MiniONE).  
+- **Copia_de_TFMlocal.ipynb** → Notebook equivalente usado en Google Colab para validación en modo simulación.
+
+Ambos contienen la misma lógica del complemento, adaptada al entorno de ejecución.
+
 --------------
 ##  Alcance y capacidades del complemento ##
 
@@ -67,25 +88,7 @@ El complemento implementa un flujo modular que permite:
 - Ejecutar un flujo principal tipo laboratorio CTF 
 
 Este código fue utilizado como parte del proceso de validación técnica del TFM.
-----------
-## Estructura del repositorio
 
-- **Copia_de_TFMlocal.ipynb** – Notebook principal desarrollado en Google Colab.  
-Este notebook contiene el mismo código que el archivo `TFMlocal.py` utilizado en Ubuntu durante la validación en MiniONE.
-
-- **TFMlocal.py** – Versión del complemento ejecutada en Ubuntu dentro del entorno real (MiniONE + VirtualBox).  
-Este archivo corresponde a la ejecución en modo simulación y pruebas de interacci{on con la API.
-
-- **logs/** – Carpeta de logs generados durante la validación (almacenados en Google Drive).
-
-- **README.md** – Documentación del repositorio.
-
-## Correspondencia entre archivos
-
-- **TFMlocal.py** → Archivo ejecutado en Ubuntu dentro del entorno real (MiniONE).  
-- **Copia_de_TFMlocal.ipynb** → Notebook equivalente usado en Google Colab para validación en modo simulación.
-
-Ambos contienen la misma lógica del complemento, adaptada al entorno de ejecución.
 
 
 ----------------------------
