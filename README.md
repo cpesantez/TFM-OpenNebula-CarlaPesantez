@@ -22,7 +22,6 @@ El complemento implementa un flujo modular que permite:
 Este código fue utilizado como parte del proceso de validación técnica del TFM.
 
 
-
 ## ⚙️ Arquitectura del complemento
 
 El código está organizado en módulos:
@@ -56,9 +55,18 @@ El complemento incluye un modo de simulación:
 
 ##  Estructura del repositorio
 
-- **`TFMlocal.ipynb`** – Notebook principal desarrollado en Google Colab  
-- **`logs/eventos_complemento.log`** – Registro de eventos del complemento  
-- **`README.md`** – Documentación del repositorio  
+## Estructura del repositorio
+
+- ** `Copia_de_TFMlocal.ipynb`** – Notebook principal desarrollado en Google Colab.  
+Este notebook contiene el mismo código que el archivo `local.py` utilizado en Ubuntu durante la validación en MiniONE.
+
+- ** `TFMlocal.py`** – Versión del complemento ejecutada en Ubuntu dentro del entorno real (MiniONE + VirtualBox).  
+Este archivo corresponde a la ejecución en modo simulación y modo real dentro de la infraestructura local.
+
+- ** `logs/`** – Carpeta de logs generados durante la validación (almacenados en Google Drive).
+
+- **`README.md`** – Documentación del repositorio.
+
 
 ---
 
@@ -66,7 +74,11 @@ El complemento incluye un modo de simulación:
 
 1. Abrir el notebook en Google Colab o Jupyter.  
 2. Ajustar credenciales reales de `oneadmin` si se desactiva el modo simulación.  
-3. Ejecutar la función `ejecutar_complemento()` para iniciar el flujo.  
+3. Ejecutar la función `ejecutar_complemento()` para iniciar el flujo.
+4. 
+
+-----
+
 
 ## Validación del complemento
 La validación del complemento se realizó en dos entornos distintos, siguiendo una metodología incremental:
@@ -84,6 +96,7 @@ En este modo, el sistema:
 - Valida la lógica modular sin llamar a la API XML‑RPC
 
 Esta validación permitió comprobar la coherencia del flujo, la modularidad y la trazabilidad del sistema.
+
 ## 2. Validación en Ubuntu + MiniONE (entorno real)
 El complemento también fue ejecutado en un entorno real basado en:
 
