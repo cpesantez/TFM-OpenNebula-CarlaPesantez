@@ -73,7 +73,10 @@ El desarrollo, ejecución y validación del complemento se realizaron utilizando
 
 Aunque inicialmente se planificó utilizar Google Colab como entorno principal de desarrollo distribuido, su uso se centró en la validación conceptual del diseño y en la ejecución en modo simulación. Su integración con GitHub facilitó la trazabilidad y el control de versiones durante el desarrollo.
 
-<img width="859" height="648" alt="image" src="https://github.com/user-attachments/assets/7ab41466-442a-42f0-b6f1-3414c16c71da" />
+
+<img width="864" height="649" alt="image" src="https://github.com/user-attachments/assets/ec756005-703e-4ea9-843c-6bf8c0bb2778" />
+
+Figura 1: Arquitectura del entorno técnico. Fuente: Elaboración propia en Canva.
 
 --------------
 
@@ -104,7 +107,7 @@ La siguiente figura muestra la estructura conceptual del script `tfmlocal.py`, i
 <img width="1061" height="760" alt="image" src="https://github.com/user-attachments/assets/1178788d-de65-4d36-9ba3-06babab16c2b" />
 
 
-*Figura: Estructura modular del complemento implementado en Google Colab. Fuente: Elaboración propia en Canva.*
+*Figura 2: Estructura modular del complemento implementado en Google Colab. Fuente: Elaboración propia en Canva.*
 
 
 El código está organizado en módulos:
