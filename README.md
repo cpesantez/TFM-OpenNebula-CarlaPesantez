@@ -1,6 +1,7 @@
 # Complemento Técnico – TFM Carla Pesántez
 
 ## Tema del TFM
+
 **Evaluación Comparativa de Soluciones Cyber Range en Nube Pública y Arquitecturas Híbridas, con Desarrollo de un Complemento Comunitario para OpenNebula**
 
 Este repositorio contiene el complemento técnico desarrollado para el TFM, enfocado en la validación de un entorno local basado en OpenNebula MiniONE sobre Ubuntu 22.04 LTS, ejecutado en VirtualBox con configuración NAT + Port Forwarding.
@@ -68,7 +69,7 @@ Este archivo corresponde a la ejecución en modo simulación y modo real dentro 
 
 ## Correspondencia entre archivos
 
-- `local.py` → Archivo ejecutado en Ubuntu dentro del entorno real (MiniONE).  
+- `TFMlocal.py` → Archivo ejecutado en Ubuntu dentro del entorno real (MiniONE).  
 - `Copia_de_TFMlocal.ipynb` → Notebook equivalente usado en Google Colab para validación en modo simulación.
 
 Ambos contienen la misma lógica del complemento, adaptada al entorno de ejecución.
@@ -77,10 +78,17 @@ Ambos contienen la misma lógica del complemento, adaptada al entorno de ejecuci
 
 ##  Ejecución del complemento
 
-1. Abrir el notebook en Google Colab o Jupyter.  
-2. Ajustar credenciales reales de `oneadmin` si se desactiva el modo simulación.  
-3. Ejecutar la función `ejecutar_complemento()` para iniciar el flujo.
-4. 
+El complemento puede ejecutarse de dos maneras, dependiendo del entorno:
+
+1. Ejecución desde el notebook (Google Colab o  Jupyter)
+2. Activar o desactivar el modo simulación modificando la variable:
+  MODO_SIMULACION = True   # Simulación
+  MODO_SIMULACION = False  # Modo real
+3. Si se usa modo real, ajustar las credenciales de oneadmin.
+4. Ejecutar todas las celdas hasta llegar al flujo principal.
+5. Ejecutar:
+   ejecutar_complemento()
+
 
 -----
 
